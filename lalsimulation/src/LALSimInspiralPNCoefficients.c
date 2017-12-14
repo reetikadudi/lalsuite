@@ -639,6 +639,11 @@ XLALSimInspiralPNPhasing_F2(
     memset(pfa, 0, sizeof(PNPhasingSeries));
 
     /* Non-spin phasing terms - see arXiv:0907.0700, Eq. 3.18 */
+    c_21_3PN = 0;
+    c_22_4PN = 0;
+    a_6_c = 0;
+    c_22_5PN = 0;
+    
     pfa->v[0] = 1.L;
     pfa->v[1] = 0.L;
     pfa->v[2] = 5.L*(743.L/84.L + 11.L * eta)/9.L;

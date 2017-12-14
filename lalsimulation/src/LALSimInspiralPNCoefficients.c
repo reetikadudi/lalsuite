@@ -711,7 +711,7 @@ XLALSimInspiralPNPhasing_F2(
     pfa->vlogv[10] = 3.L/(1.L - 3.L * eta) * (12863780362.L/4584195.L * eta * eta * eta
                 + 13849493129.L/13752585.L * eta * eta
                 - 24279431641.L/27505170.L * eta+ 6470582647.L/82515510.L);
-    pfa->v[11] = LAL_PI*( c_21_3PN * (-160.L/27.L * eta * eta + 40.L/27.L * eta);
+    pfa->v[11] = LAL_PI*( c_21_3PN * (-160.L/27.L * eta * eta + 40.L/27.L * eta)
                 + 320.L/9.L * eta * c_22_4PN + 657627073445.L/144171099072.L *eta *eta *eta *eta 
                 - 1080597828475.L/26212927104.L *eta *eta *eta 
                 + 5120314955146397.L/629110250496.L *eta*eta
@@ -722,6 +722,7 @@ XLALSimInspiralPNPhasing_F2(
                 + 1857541407236594411.L/276808510218240.L
                 - 26325.L/196.L * log(3.) - 862549.L/1134.L * log(2.));
     pfa->vlogv[11] = -3* LAL_PI * (1346662.L/1701.L * eta + 3558011.L/23814.L);
+
     /* modify the PN coefficients if a non null LALSimInspiralTestGRParam structure is passed */
     pfa->v[0]*=(1.0+XLALSimInspiralWaveformParamsLookupNonGRDChi0(p));
     pfa->v[1] = XLALSimInspiralWaveformParamsLookupNonGRDChi1(p);

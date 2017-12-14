@@ -198,6 +198,19 @@ int XLALSimInspiralTaylorF2Core(
     switch (phaseO)
     {
         case -1:
+        case 11:
+            pfa11 = pfa.v[11];
+            pfl11 = pfa.vlogv[11];
+        case 10:
+            pfa10 = pfa.v[10];
+            pfl10 = pfa.vlogv[10];
+        case 9:
+            pfa9 = pfa.v[9];
+            pfl9 = pfa.vlogv[9];
+        case 8:
+            pfa8 = pfa.v[8];
+            pfl8 = pfa.vlogv[8];
+            pfll8 = pfa.vlogvlogv[8];
         case 7:
             pfa7 = pfa.v[7];
         case 6:
@@ -315,6 +328,11 @@ int XLALSimInspiralTaylorF2Core(
         const REAL8 v9ref = vref * v8ref;
         const REAL8 v10ref = vref * v9ref;
         const REAL8 v12ref = v2ref * v10ref;
+        const REAL8 v11ref = vref * v10ref;
+        ref_phasing += (pfa11 + pfl11 * logvref) * v11ref;
+        ref_phasing += (pfa10 + pfl10 * logvref) * v10ref;
+        ref_phasing += (pfa9 + pfl9 * logvref) * v9ref;
+        ref_phasing += (pfa8 + pfl8 * logvref + pfll8 * logvref * logvref) * v8ref;
         ref_phasing += pfa7 * v7ref;
         ref_phasing += (pfa6 + pfl6 * logvref) * v6ref;
         ref_phasing += (pfa5 + pfl5 * logvref) * v5ref;
@@ -345,12 +363,17 @@ int XLALSimInspiralTaylorF2Core(
         const REAL8 v8 = v * v7;
         const REAL8 v9 = v * v8;
         const REAL8 v10 = v * v9;
+        const REAL8 v11 = v * v10;
         const REAL8 v12 = v2 * v10;
         REAL8 phasing = 0.;
         REAL8 dEnergy = 0.;
         REAL8 flux = 0.;
         REAL8 amp;
-
+        
+        phasing += (pfa11 + pfl11 * logv) * v11;
+        phasing += (pfa10 + pfl10 * logv) * v10;
+        phasing += (pfa9 + pfl9 * logv) * v9;
+        phasing += (pfa8 + pfl8 * logv + pfll8 * logv * logv) * v8;
         phasing += pfa7 * v7;
         phasing += (pfa6 + pfl6 * logv) * v6;
         phasing += (pfa5 + pfl5 * logv) * v5;
